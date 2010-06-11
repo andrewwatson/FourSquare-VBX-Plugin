@@ -1,0 +1,13 @@
+{
+    "name" : "FourSquare",
+    "author" : "Andrew Watson",
+    "description" : "Applets that use the FourSquare API",
+    "url" : "http://othernum.com",
+    "disabled" : false,
+    "links" : [{
+                        "menu" : "setup",
+                        "url" : "4sqSettings",
+                        "script" : "4sqSettings/index.php",
+                        "label" : "FourSquare"
+                }]
+}
