@@ -2,5 +2,5 @@
     "name" : "FourSquare",
     "description" : "Control Your Phone with Foursquare",
     "type" : "voice",
-    "disabled" : false;
+    "disabled" : false
 }
