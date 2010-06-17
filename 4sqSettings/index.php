@@ -6,7 +6,6 @@
 	$foursquare_password = PluginStore::get("foursquare_password_$user_id", "");
 
 
-
 if (isset($_REQUEST['savebutton'])) {
 	PluginStore::set("foursquare_username_$user_id",$_REQUEST['username']);
 	PluginStore::set("foursquare_password_$user_id",$_REQUEST['password']);
@@ -27,9 +26,20 @@ if (isset($_REQUEST['savebutton'])) {
 		<div class="vbx-content-section">
         <h3>Store Your Credentials</h3>
 			<form action="" class="vbx-form">
-			<p style="width: 200px;">Username: <input name="username" size="30" value="<?php echo $foursquare_username; ?>"></p>
-			<p style="width: 200px;">Password: <input name="password" size="30" value="<?php echo $foursquare_password; ?>" type="password"></p>
-			<button name="savebutton">SAVE</button>
+			<div class="vbx-input-container">
+
+			<label class="field-label">Username 
+				<input name="username" size="30" value="<?php echo $foursquare_username; ?>" class="medium text">
+			</label>
+
+			</div>
+
+			<div class="vbx-input-container">
+				<label class="field-label">Password
+					<input name="password" size="30" value="<?php echo $foursquare_password; ?>" type="password" class="medium text">
+				</label>
+				<button class="button-normal" name="savebutton"><span>SAVE</span></button>
+			</div>
 			</form>
 		</div>
     </div>
