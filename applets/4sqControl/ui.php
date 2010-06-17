@@ -18,6 +18,7 @@ $choices = AppletInstance::getValue('choices[]');
 			and then click on the venue.  You should see the URL your browser is pointed at looks like 
 			http://foursquare.com/venue/100281 and that 100281 is the Venue ID to use</p>
 
+		<p>Click <a href="http://foursquare.com/history" target="_new">Here </a>to see your History</p>
 		<h3>User Selection</h3>
 		<p>Choose which VBX user to use for controlling this Applet with their 4sq checkins</p>
 		<?php echo AppletUI::UserGroupPicker('4sq-controller'); ?>
