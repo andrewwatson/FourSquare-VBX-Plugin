@@ -8,7 +8,6 @@ if (count($keys) == 0) {
 
 $choices = AppletInstance::getValue('choices[]');
 
-
 ?>
 
 <div class="vbx-applet menu-applet">

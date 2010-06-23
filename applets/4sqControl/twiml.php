@@ -20,10 +20,13 @@
 		$choices = AppletInstance::getDropZoneUrl('choices[]');
 
 		$found = false;
-		foreach ($keys as $id => $value) {
-			if ($value == $lastVenue) {
-				$response->addRedirect($choices[$id]);
-				$found = true;
+		if (is_array($keys)) {
+
+			foreach ($keys as $id => $value) {
+				if ($value == $lastVenue) {
+					$response->addRedirect($choices[$id]);
+					$found = true;
+				}
 			}
 		}
 
