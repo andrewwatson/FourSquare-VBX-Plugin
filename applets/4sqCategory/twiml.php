@@ -9,12 +9,12 @@
 
 	$default = AppletInstance::getDropZoneUrl('default-action');
 
-
 	$response = new Response();
 
 	if (!empty($foursquare_username)) {
 
 		$lastVenue = getLastVenue($foursquare_username,$foursquare_password);
+		$category = getCategory($lastVenue);
 
 		$keys = AppletInstance::getValue('keys[]');
 		$choices = AppletInstance::getDropZoneUrl('choices[]');
@@ -23,7 +23,7 @@
 		if (is_array($keys)) {
 
 			foreach ($keys as $id => $value) {
-				if ($value == $lastVenue) {
+				if ($value == $category) {
 					$response->addRedirect($choices[$id]);
 					$found = true;
 				}

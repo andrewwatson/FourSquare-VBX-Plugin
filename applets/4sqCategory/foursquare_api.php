@@ -14,6 +14,13 @@
 		}
 	}
 
+	function getCategory($venue_result) {
+		$last_id = $venue_result->user->checkin->venue->primarycategory->fullpathname;
+		$path = explode(":",$last_id);
+
+		return $path[0];
+	}
+
   function getLastVenue($user,$pass) {
 
 	$ch = curl_init("http://api.foursquare.com/v1/user.json");
@@ -24,9 +31,7 @@
 	$result = json_decode($result);
 	//print_r($result);
 
-	$last_id = $result->user->checkin->venue->id;
-
-	return $last_id;
+	return $result;
   }
 
   function checkLocation($user,$pass, $venue_id) {
