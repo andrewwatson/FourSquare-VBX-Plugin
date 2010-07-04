@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	// Disable all the template row inputs
-	$('.menu-applet tr.hide input').attr('disabled', 'disabled');
+	$('.4sq-cat-applet tr.hide input').attr('disabled', 'disabled');
 
 	var app = $('.flow-instance.standard---menu');
-	$('.menu-applet .menu-prompt .audio-choice', app).live('save', function(event, mode, value) {
+	$('.4sq-cat-applet .menu-prompt .audio-choice', app).live('save', function(event, mode, value) {
 		var text = '';
 		if(mode == 'say') {
 			text = value;
@@ -17,28 +17,28 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.menu-applet input.keypress').live('change', function(event) {
+	$('.4sq-cat-applet input.keypress').live('change', function(event) {
 		var row = $(this).parents('tr');
 		$('input[name=^choices]', row).attr('name', 'keys['+$(this).val()+']');
 	});
 
-	$('.menu-applet .action.add').live('click', function(event) {
+	$('.4sq-cat-applet .action.add').live('click', function(event) {
 		event.preventDefault();
 		var row = $(this).closest('tr');
-		var newRow = $('tfoot tr', $(this).parents('.menu-applet')).html();
+		var newRow = $('tfoot tr', $(this).parents('.4sq-cat-applet')).html();
 		newRow = $('<tr>' + newRow + '</tr>')			
 			.show()
 			.insertAfter(row);
 		$('.flowline-item').droppable(Flows.events.drop.options);
 		$('td', newRow).flicker();
-		$('.flowline-item input', newRow).attr('name', 'choices[]');
-		$('input.keypress', newRow).attr('name', 'keys[]');
+		$('.flowline-item input', newRow).attr('name', 'category_options[]');
+		$('input.keypress', newRow).attr('name', 'categories[]');
 		$('input', newRow).removeAttr('disabled').focus();
 		$(event.target).parents('.options-table').trigger('change');
 		return false;
 	});
 
-	$('.menu-applet .action.remove').live('click', function() {
+	$('.4sq-cat-applet .action.remove').live('click', function() {
 		var row = $(this).closest('tr');
 		var bgColor = row.css('background-color');
 		row.animate(
@@ -53,10 +53,10 @@ $(document).ready(function() {
 		return false;
 	});
 
-	$('.menu-applet .options-table').live('change', function() {
+	$('.4sq-cat-applet .options-table').live('change', function() {
 		var first = $('tbody tr', this).first();
 		$('.action.remove', first).hide();
 	});
 
-	$('.menu-applet .options-table').trigger('change');
+	$('.4sq-cat-applet .options-table').trigger('change');
 });
