@@ -1,40 +1,23 @@
 <?php
 $defaultNumberOfChoices = 4;
-$keys = AppletInstance::getValue('keys[]', array('1','2','3','4') );
+$categories = AppletInstance::getValue('categories[]', array('1','2','3','4') );
 
-if (count($keys) == 0) {
-	$keys = array('1','2','3','4');
+if (count($categories) == 0) {
+	$categories = array('1','2','3','4');
 }
 
-$choices = AppletInstance::getValue('choices[]');
+$category_options = AppletInstance::getValue('category_options[]');
 
-error_log($keys);
 
 $options = array(
 					"Arts &amp; Entertainment", "College &amp; Education","Food",
 					"Home / Work / Other","Nightlife","Parks &amp; Outdoors","Shops","Travel"
 				);
 
-	/*
-	function options_menu($options,$default = "") {
-
-		error_log("options_menu: default: ${default}");
-
-		foreach ($options as $the_option) {
-			$selected = "";
-			if ($the_option == $default) { $selected = " selected"; }
-			printf('<option value="%s" %s>%s</option>',$the_option,$selected,$the_option);
-		}
-
-	}
-	*/
-
-	error_log("function defined");
-
 ?>
 
 
-<div class="vbx-applet menu-applet">
+<div class="vbx-applet 4sq-cat-applet">
 
 		<h2>FourSquare Category Options</h2>
 		<p>Choose a category, then choose an action to take if your last checkin matches that category.</p>
@@ -43,7 +26,7 @@ $options = array(
 		<h3>User Selection</h3>
 		<p>Choose which VBX user to use for controlling this Applet with their 4sq checkins</p>
 
-		<?php echo AppletUI::UserGroupPicker('4sq-controller'); ?>
+		<?php echo AppletUI::UserGroupPicker('4sq-cat-controller'); ?>
 
 		<table class="vbx-menu-grid options-table">
 			<thead>
@@ -73,7 +56,7 @@ $options = array(
 				</tr>
 			</tfoot>
 			<tbody>
-				<?php foreach($keys as $i=>$key) : ?>
+				<?php foreach($categories as $i=>$category) : ?>
 				<tr>
 					<td>
 						<fieldset class="vbx-input-container">
@@ -82,7 +65,7 @@ $options = array(
 	<?php
 		foreach ($options as $the_option) {
 			$selected = "";
-			if ($the_option == $key) { $selected = " selected"; }
+			if ($the_option == $category) { $selected = " selected"; }
 			printf('<option value="%s" %s>%s</option>',$the_option,$selected,$the_option);
 		}
 	?>
@@ -91,7 +74,7 @@ $options = array(
 					</td>
 					<td>then</td>
 					<td>
-						<?php echo AppletUI::dropZone('choices['.($i).']', 'Drop item here'); ?>
+						<?php echo AppletUI::dropZone('category_options['.($i).']', 'Drop item here'); ?>
 					</td>
 					<td>
 						<a href="" class="add action"><span class="replace">Add</span></a> <a href="" class="remove action"><span class="replace">Remove</span></a>
@@ -103,9 +86,8 @@ $options = array(
 
 		<h3>Default Action</h3>
 		<p>When your last checkin is not in the list above, then what?</p>
-		<?php echo AppletUI::dropZone('default-action'); ?>
+		<?php echo AppletUI::dropZone('4sq-cat-default-action'); ?>
     	<br />
 
 </div><!-- .vbx-applet -->
-<?php error_log("4square Category Complete"); ?>
 

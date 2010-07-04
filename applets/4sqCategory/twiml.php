@@ -1,13 +1,13 @@
 <?php
 	include("foursquare_api.php");
 
-	$user = AppletInstance::getUserGroupPickerValue('4sq-controller');
+	$user = AppletInstance::getUserGroupPickerValue('4sq-cat-controller');
 	$user_id = $user->values["id"];
 
    $foursquare_username = PluginStore::get("foursquare_username_$user_id", "");
    $foursquare_password = PluginStore::get("foursquare_password_$user_id", "");
 
-	$default = AppletInstance::getDropZoneUrl('default-action');
+	$default = AppletInstance::getDropZoneUrl('4sq-cat-default-action');
 
 	$response = new Response();
 
@@ -16,15 +16,15 @@
 		$lastVenue = getLastVenue($foursquare_username,$foursquare_password);
 		$category = getCategory($lastVenue);
 
-		$keys = AppletInstance::getValue('keys[]');
-		$choices = AppletInstance::getDropZoneUrl('choices[]');
+		$categories = AppletInstance::getValue('categories[]');
+		$category_options = AppletInstance::getDropZoneUrl('category_options[]');
 
 		$found = false;
-		if (is_array($keys)) {
+		if (is_array($categories)) {
 
-			foreach ($keys as $id => $value) {
+			foreach ($categories as $id => $value) {
 				if ($value == $category) {
-					$response->addRedirect($choices[$id]);
+					$response->addRedirect($category_options[$id]);
 					$found = true;
 				}
 			}
